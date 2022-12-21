@@ -1,0 +1,89 @@
+type Query{
+    getMatchs: [Match]
+    getMatch(id: ID) : Match
+    getTicket(id: ID) : Ticket
+    getTickets: [Ticket]
+}
+
+type Mutation{
+    addMatch(m: MatchRequestDto ) : MatchResponseDto
+    editMatch(id:ID, m: MatchRequestDto) : MatchResponseDto
+    deleteMatch(id:ID): Boolean
+    addTicket(t: TicketRequestDto) : TicketResponseDto
+    editTicket(id:ID, t:TicketRequestDto) : TicketResponseDto
+    deleteTicket(id:ID):Boolean
+}
+
+type Match{
+     id:ID,
+     ref_match:String,
+     date_heure:String,
+     lieu: String,
+     equipe1:String,
+     equipe2:String,
+     tickets:[Ticket]
+}
+
+input MatchInput{
+    id:ID,
+    ref_match:String,
+    date_heure:String,
+    lieu: String,
+    equipe1:String,
+    equipe2:String
+}
+
+input MatchRequestDto{
+    id:ID,
+    ref_match:String,
+    lieu: String,
+    equipe1:String,
+    equipe2:String,
+    date_heure:String
+
+}
+
+type  MatchResponseDto{
+    id:ID,
+    ref_match:String,
+    lieu: String,
+    equipe1:String,
+    equipe2:String,
+    date_heure:String
+}
+
+
+
+
+type Ticket{
+    id : ID,
+    reference: String,
+    prix : Float,
+    statut : String,
+    match: Match
+}
+
+input TicketInput{
+    id : ID,
+    reference: String,
+    prix : Float,
+    statut : String,
+    match : MatchRequestDto
+}
+
+input TicketRequestDto{
+    id:ID,
+    reference: String,
+    prix : Float,
+    statut : String
+    match : MatchRequestDto
+}
+
+type TicketResponseDto{
+    id : ID,
+    reference: String,
+    prix : Float,
+    statut : String,
+    match : Match
+
+}

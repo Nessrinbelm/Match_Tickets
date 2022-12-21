@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 @Data @AllArgsConstructor @NoArgsConstructor
 public class MatchResponseDto {
-    private String id;
+    private Long id;
     private String ref_match;
     private Date date_heure;
     private String lieu;
